@@ -1,26 +1,28 @@
-# INTRODUCTION
+# Java Socket Chat App
 
-Over the summer I was super interested in learning how computers connected to each other. Naturally, I then learned about Java Sockets, which made those connections happen. This repo was me experimenting with Sockets and making a java messaging application fully in the terminal for communicating with other computers
+A simple multi-client chat application using Java Sockets. The server accepts connections and broadcasts messages to all connected clients. The client includes a small Swing GUI where users enter a display name, connect, and chat.
 
-## SETUP
+## How to Run
 
-simply clone the repo.
-This repo shows off the a lot of different files the only important ones though are Server.java and Client.java. The others are just helper method used inside them so you can ignore them. I did push the .class bytecode files but obviously it's a good idea to recompile them on your computer before using them
-
-## RUNNING THE PROGRAM
-If you want to just run this on yoru computer to test it out, it works out of the box
-Open up a window in the terminal and run:
-
+### Start the Server
 javac Server.java
 java Server
 
-Afterwards, now that the server application is running its constantly looking for incoming client connections so open another terminal window and run:
+### Start the Client (GUI)
+javac Client.java SimpleGUI.java
+java SimpleGUI
 
-javac Client.java
-java Client
 
-Now a connection was made, but sending texts through it no other client will see it since only one is connected so open a third terminal window and run:
+### Description
+- The server runs with no GUI and manages connected clients.
+- The client GUI lets you:
+  - Enter a name
+  - Connect to the server
+  - Send/receive messages in real time
+- If the server disconnects, the client returns to the name screen and shows a notification.
 
-java Client
-
-The client code is already compiled so no need to recompile it unless you really want to. now you have a second client connected and you can send messages, which basically just go to the server and from there the server broadcasts to all the clients connected to it stored in an synchronizedlist which from my research is basically a safer list to use for this scenario.
+## Files
+- Server.java — handles client connections and message broadcasting
+- Client.java — socket connection + send/receive logic
+- SimpleGUI.java — Swing interface for chatting
+```
